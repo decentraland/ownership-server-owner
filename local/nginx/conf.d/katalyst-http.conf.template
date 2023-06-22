@@ -1,0 +1,17 @@
+rewrite_log on;
+
+upstream ownership-server {
+    server ownership-server:1234;
+}
+
+server {
+    listen 80 reuseport;
+    server_name $katalyst_host;
+
+    client_max_body_size 256M;
+
+    root /etc/nginx/html;
+
+    include /etc/nginx/include/routes.conf;
+    include /etc/nginx/include/metrics.conf;
+}

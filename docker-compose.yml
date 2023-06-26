@@ -12,6 +12,9 @@ services:
       - "1234"
     network_mode:
       "host"
+    logging:
+      driver: syslog
+      options: { tag: 'ownership-server' }
 
   nginx:
     container_name: nginx

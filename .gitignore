@@ -4,3 +4,4 @@ local/certbot/conf/**
 local/nginx/conf.d/00-katalyst.conf
 
 .env
+.env-database-*

@@ -1,7 +1,15 @@
 rewrite_log on;
 
 upstream ownership-server {
-    server ownership-server:1234;
+    server 0.0.0.0:1234;
+}
+
+upstream postgres-metrics {
+    server 0.0.0.0:9187;
+}
+
+upstream sink-server {
+    server 0.0.0.0:9102;
 }
 
 server {

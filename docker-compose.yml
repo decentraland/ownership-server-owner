@@ -34,6 +34,7 @@ services:
     depends_on:
       - certbot
       - ownership-server
+      - postgres-exporter
     logging:
       driver: syslog
       options: { tag: nginx }
@@ -51,5 +52,24 @@ services:
     logging:
       driver: syslog
       options: { tag: certbot }
+    network_mode:
+      "host"
+
+  postgres-exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter
+    container_name: postgres-exporter
+    ports:
+      - "9187:9187"
+    environment:
+      - PG_EXPORTER_EXTEND_QUERY_PATH=/etc/postgres-exporter/queries.yaml
+    env_file:
+      - .env-database-metrics
+    volumes:
+      - ./local/postgres-exporter:/etc/postgres-exporter
+    restart: always
+    shm_size: 512mb
+    logging:
+      driver: syslog
+      options: { tag: postgres-exporter }
     network_mode:
       "host"

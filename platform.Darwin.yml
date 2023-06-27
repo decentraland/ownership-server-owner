@@ -8,3 +8,4 @@ services:
       driver: local
   certbot: *COMMON
   ownership-server: *COMMON
+  postgres-exporter: *COMMON

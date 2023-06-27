@@ -4,6 +4,10 @@ upstream ownership-server {
     server 0.0.0.0:1234;
 }
 
+upstream postgres-metrics {
+    server 0.0.0.0:9187;
+}
+
 upstream sink-server {
     server 0.0.0.0:9102;
 }

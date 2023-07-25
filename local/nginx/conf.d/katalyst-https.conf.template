@@ -12,6 +12,10 @@ upstream sink-server {
     server 0.0.0.0:9102;
 }
 
+upstream sink-server-dev {
+    server 0.0.0.0:9103;
+}
+
 server {
     listen 80 reuseport;
     server_name $katalyst_host;
